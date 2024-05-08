@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    environment:
+      RABBITMQ_URI: ${RABBITMQ_URI}
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    environment:
+       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    expose:
+      - 5672
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq-data:
+
+
+
