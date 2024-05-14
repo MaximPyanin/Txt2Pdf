@@ -2,8 +2,9 @@ from typing import Any
 
 from fpdf import FPDF
 from celery import Celery
+import os
 
-celery_app = Celery("celery", broker="amqp://guest:guest@rabbitmq:5672")
+celery_app = Celery("celery", broker=os.getenv("RABBITMQ_URI"))
 
 
 class ConvertTXT:
