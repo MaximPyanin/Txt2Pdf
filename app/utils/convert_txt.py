@@ -4,7 +4,7 @@ from fpdf import FPDF
 from celery import Celery
 import os
 
-celery_app = Celery("celery", broker=os.getenv("RABBITMQ_URI"))
+celery_app = Celery("celery", broker=os.getenv("RABBITMQ_URI"),broker_connection_retry_on_startup = True)
 
 
 class ConvertTXT:
