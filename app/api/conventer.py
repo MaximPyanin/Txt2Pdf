@@ -5,7 +5,7 @@ from fastapi import APIRouter
 
 from sqlalchemy.ext.asyncio import create_async_engine
 from fastapi.responses import FileResponse
-from fastapi import FastAPI, Path, Query, UploadFile, File, HTTPException
+from fastapi import UploadFile, File, HTTPException
 from app.utils.convert_txt import ConvertTXT
 
 
